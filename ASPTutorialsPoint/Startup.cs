@@ -18,6 +18,7 @@ namespace ASPTutorialsPoint
             var builder = new ConfigurationBuilder().AddJsonFile("AppSetting.json");
             Configuration = builder.Build();
         }
+
         public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. 
@@ -31,6 +32,8 @@ namespace ASPTutorialsPoint
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseWelcomePage();
+
             app.Run(async (context) =>
             {
                 string msg = Configuration["message"];
